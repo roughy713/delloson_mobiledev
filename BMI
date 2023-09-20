@@ -1,1 +1,20 @@
+fun main(){
+    val weight = 40.5
+    val height = 67.7
 
+    try {
+        val bmi = calculateBMI(weight, height)
+        println("BMI: $bmi")
+    } catch (e: IllegalArgumentException) {
+        println("Error: ${e.message}")
+    }
+}
+
+fun calculateBMI(weightKg: Double, heightM: Double): Double {
+    if (weightKg <= 0.0 || heightM <= 0.0) {
+        throw IllegalArgumentException("Weight and height must be positive values.")
+    }
+
+    val bmi = weightKg / (heightM * heightM)
+    return bmi
+}
